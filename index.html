@@ -16,28 +16,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc Mừng Sinh Nhật!</title>
     <style>
-   body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    /* Gradient đặt ở đây để nó trải dài theo toàn bộ chiều cao trang web */
-    background: linear-gradient(180deg, #ff9cf3 0%, #d64ff5 15%, #1a013c 60%, #05022b 100%);
-    background-attachment: scroll; /* Quan trọng: để nền chạy theo nội dung */
-    color: white; 
-    margin: 0; 
-    overflow-x: hidden; 
-    scroll-behavior: smooth; 
-    min-height: 200vh;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: #000; 
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dải màu gradient của bạn */
+    background: linear-gradient(180deg, #ff9cf3 0%, #d64ff5 15%, #1a013c 50%, #000 100%);
+    z-index: -1; 
+    transform: translateZ(0); 
+}
+
+.container {
     position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 800px; /* Khung container cũ của bạn */
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
 #starfield { 
-    position: fixed; /* Giữ canvas luôn khớp màn hình để sao không bị méo */
+    position: fixed; 
     top: 0; 
     left: 0; 
     width: 100%; 
     height: 100%; 
-    z-index: -1; /* Cho lên trên nền body nhưng dưới nội dung */
-    pointer-events: none; /* Để không chặn bấm nút hay chọn ảnh */
-    background: transparent; /* Xóa gradient ở đây, để nhìn xuyên xuống body */
+    z-index: -1; 
+    pointer-events: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #1b1d2e 0%, #000 100%); display: flex; justify-content: center; align-items: center; z-index: 1000; }
         .modal { background:linear-gradient(45deg, #7209b7, #b5179e); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
@@ -45,7 +73,6 @@
         button { background: linear-gradient(45deg, #b5179e, #7209b7); color: rgb(243, 242, 242); border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
         button:hover { transform: scale(1.05); box-shadow: 0 0 15px #af279b; }
         #main-content { display: none; padding-top: 50px; }
-        .container { max-width: 800px; margin: auto; padding: 20px; text-align: center;  }
         .story-item { margin: 80px 0; opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
         .story-item.show { opacity: 1; transform: translateY(0); }
         .story-img { width: 100%; max-width: 500px; border-radius: 15px; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -566,4 +593,5 @@ function checkRetryAnswer() {
 }
     </script>
 </body>
+
 </html>
