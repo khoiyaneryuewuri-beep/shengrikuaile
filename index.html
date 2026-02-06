@@ -21,37 +21,27 @@ body {
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    background-color: #000; 
+    /* Thiết lập nền trực tiếp trên body nhưng dùng min-height */
+    background: linear-gradient(180deg, #ff9cf3 0%, #d64ff5 15%, #1a013c 50%, #000 100%);
+    background-attachment: scroll; /* Để màu trôi theo khi lướt */
+    min-height: 100vh;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Dải màu gradient của bạn */
-    background: linear-gradient(180deg, #ff9cf3 0%, #d64ff5 15%, #1a013c 50%, #000 100%);
-    z-index: -1; 
-    transform: translateZ(0); 
-}
+/* Xóa bỏ hoặc comment (vô hiệu hóa) đoạn body::before cũ đi */
+/* body::before { ... } <- Xóa đoạn này nếu còn trong code */
 
 .container {
     position: relative;
     z-index: 2;
     width: 90%;
-    max-width: 800px; /* Khung container cũ của bạn */
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    margin: 0 auto; /* Bỏ margin top 50px để màu hồng hiện ngay từ đầu */
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.05); /* Giảm độ mờ để thấy rõ gradient */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); 
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    text-align: center;
 }
-
 #starfield { 
     position: fixed; 
     top: 0; 
@@ -595,3 +585,4 @@ function checkRetryAnswer() {
 </body>
 
 </html>
+
