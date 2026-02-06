@@ -2,7 +2,6 @@
 <html lang="vi">
 <head>
     <meta name="google-site-verification" content="FdnCYxFJK7kpfi6Bmcs9i9T6_fKSnEobSmU6m8vvekQ" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Trang web chúc mừng sinh nhật dành cho TianYi - Kỷ niệm và những lời chúc tốt đẹp nhất.">
     <meta name="keywords" content="Chúc mừng sinh nhật, Happy Birthday TianYi, quà tặng sinh nhật">
     <meta name="robots" content="index, follow">
@@ -46,10 +45,7 @@
         button { background: linear-gradient(45deg, #b5179e, #7209b7); color: rgb(243, 242, 242); border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; }
         button:hover { transform: scale(1.05); box-shadow: 0 0 15px #af279b; }
         #main-content { display: none; padding-top: 50px; }
-        .container { width: 90%; /* Chiếm 90% chiều rộng màn hình điện thoại */
-                     max-width: 800px; /* Nhưng không quá 800px trên máy tính */
-                     margin: 0 auto;
-                     padding: 20px; }
+        .container { max-width: 800px; margin: auto; padding: 20px; text-align: center;  }
         .story-item { margin: 80px 0; opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
         .story-item.show { opacity: 1; transform: translateY(0); }
         .story-img { width: 100%; max-width: 500px; border-radius: 15px; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -422,21 +418,17 @@ const numStars = 400;
 
 function initStars() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = window.innerHeight; // Luôn theo khung hình người xem
     
-    // Nếu là điện thoại thì ít sao hơn cho đỡ lag
-    const isMobile = window.innerWidth < 768;
-    const currentNumStars = isMobile ? 300 : 800; 
-
     stars = [];
-    for (let i = 0; i < currentNumStars; i++) {
+    for (let i = 0; i < numStars; i++) {
         stars.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             size: Math.random() * 3 + 1,
-            speed: Math.random() * 0.3 + 0.05,
+            speed: Math.random() * 0.2 + 0.05, // Tốc độ chậm cho chill
             opacity: Math.random(),
-            type: Math.floor(Math.random() * 3) 
+            type: Math.floor(Math.random() * 3) // 0: tròn, 1: dẹp, 2: sao 5 cánh
         });
     }
 }
