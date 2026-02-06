@@ -15,29 +15,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc Mừng Sinh Nhật!</title>
-    <style>
+<style>
    body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    /* Gradient đặt ở đây để nó trải dài theo toàn bộ chiều cao trang web */
-    background: linear-gradient(180deg, #ff9cf3 0%, #d64ff5 15%, #1a013c 60%, #05022b 100%);
-    background-attachment: scroll; /* Quan trọng: để nền chạy theo nội dung */
     color: white; 
     margin: 0; 
+    padding: 0;
     overflow-x: hidden; 
-    scroll-behavior: smooth; 
-    min-height: 200vh;
-    position: relative;
+    scroll-behavior: smooth;
+    /* Không đặt background ở body nữa */
+    background-color: #05022b; 
+}
+
+/* Lớp nền này sẽ dài bằng toàn bộ nội dung web */
+body::before {
+    content: "";
+    position: absolute; /* Tuyệt đối theo chiều dài trang */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Nó sẽ tự động kéo dài theo nội dung web */
+    background: linear-gradient(180deg, #ff9cf3 0%, #d64ff5 15%, #1a013c 60%, #05022b 100%);
+    z-index: -2;
+    pointer-events: none;
 }
 
 #starfield { 
-    position: fixed; /* Giữ canvas luôn khớp màn hình để sao không bị méo */
+    position: fixed; /* Sao thì phải đứng yên (fixed) để bay lơ lửng */
     top: 0; 
     left: 0; 
     width: 100%; 
     height: 100%; 
-    z-index: -1; /* Cho lên trên nền body nhưng dưới nội dung */
-    pointer-events: none; /* Để không chặn bấm nút hay chọn ảnh */
-    background: transparent; /* Xóa gradient ở đây, để nhìn xuyên xuống body */
+    z-index: -1; 
+    pointer-events: none;
 }
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, #1b1d2e 0%, #000 100%); display: flex; justify-content: center; align-items: center; z-index: 1000; }
         .modal { background:linear-gradient(45deg, #7209b7, #b5179e); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
